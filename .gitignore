@@ -1,0 +1,8 @@
+.env
+historial.db
+__pycache__/
+.venv/
+.web/
+.states/
+*.pyc
+reflex.lock
