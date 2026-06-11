@@ -1,6 +1,6 @@
 #  Asistente Virtual de Ciberseguridad con RAG
 
-Asistente virtual inteligente capaz de responder preguntas sobre ciberseguridad consultando una colección de libros en formato PDF, desarrollado como proyecto universitario de Inteligencia Artificial.
+Asistente virtual inteligente capaz de responder preguntas sobre ciberseguridad consultando una colección de libros en formato PDF.
 
 ##  Descripción
 
