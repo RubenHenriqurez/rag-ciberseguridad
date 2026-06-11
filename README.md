@@ -1,8 +1,8 @@
-# 🛡️ Asistente Virtual de Ciberseguridad con RAG
+#  Asistente Virtual de Ciberseguridad con RAG
 
 Asistente virtual inteligente capaz de responder preguntas sobre ciberseguridad consultando una colección de libros en formato PDF, desarrollado como proyecto universitario de Inteligencia Artificial.
 
-## 📋 Descripción
+##  Descripción
 
 El sistema utiliza una arquitectura **RAG (Retrieval-Augmented Generation)** que permite:
 - Consultar documentos PDF antes de generar una respuesta
@@ -12,20 +12,45 @@ El sistema utiliza una arquitectura **RAG (Retrieval-Augmented Generation)** que
 
 El asistente **no sustituye** el criterio de un profesional calificado en ciberseguridad.
 
+
 ##  Arquitectura
-Usuario escribe pregunta
-↓
-Interfaz web (Reflex)
-↓
-Solicitud HTTP → FastAPI (puerto 8001)
-↓
-Conversión a vector (sentence-transformers)
-↓
-Búsqueda semántica en ChromaDB
-↓
-Contexto enviado a DeepSeek AI
-↓
-Respuesta + fuentes mostradas en Reflex
+```text
+┌─────────────────────┐
+│ Usuario             │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Interfaz Reflex     │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ FastAPI :8001       │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Embeddings          │
+│ sentence-transform. │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ ChromaDB            │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ DeepSeek AI         │
+└──────────┬──────────┘
+           │
+           ▼
+┌─────────────────────┐
+│ Respuesta + Fuentes │
+└─────────────────────┘
+```
+
 ##  Stack Tecnológico
 
 | Tecnología | Uso |
@@ -42,16 +67,20 @@ Respuesta + fuentes mostradas en Reflex
 | python-dotenv | Gestión de variables de entorno |
 | httpx | Comunicación Reflex → FastAPI |
 
-## 📁 Estructura del Proyecto
+##  Estructura del Proyecto
+
+```text
 rag_ciberseguridad/
 ├── documentos/              # 7 libros PDF de ciberseguridad
 ├── rag_ciberseguridad/
-│   └── rag_ciberseguridad.py   # Frontend Reflex
+│   └── rag_ciberseguridad.py # Frontend Reflex
 ├── main.py                  # Backend FastAPI
 ├── rag_engine.py            # Motor RAG + BD SQLite
 ├── requirements.txt         # Dependencias
 ├── rxconfig.py              # Configuración Reflex
 └── .env                     # API keys (no incluido)
+```
+
 ### 1. Crear entorno virtual
 ```bash
 python -m venv .venv
@@ -94,7 +123,7 @@ reflex run
 4. La respuesta aparece con las **fuentes y páginas** consultadas
 5. El historial se guarda automáticamente en la base de datos
 
-## 📚 Documentos incluidos
+##  Documentos incluidos
 
 - Libro 01 — Dialnet Ciberseguridad
 - Libro 02 — Dialnet Ciberseguridad Enfocada en el Futuro Digital
@@ -122,5 +151,3 @@ reflex run
 - RF-14 ✅ Validación de preguntas vacías
 - RF-15 ✅ Manejo de errores técnicos
 
-
-Proyecto desarrollado para la asignatura de Inteligencia Artificial — 5to año
